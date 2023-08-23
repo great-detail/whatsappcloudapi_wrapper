@@ -12,7 +12,7 @@ class WhatsappCloud {
         WABA_ID,
     }) {
         this.accessToken = accessToken;
-        this.graphAPIVersion = graphAPIVersion || 'v13.0';
+        this.graphAPIVersion = graphAPIVersion || 'v17.0';
         this.senderPhoneNumberId = senderPhoneNumberId;
         this.baseUrl = `https://graph.facebook.com/${this.graphAPIVersion}/${this.senderPhoneNumberId}`;
         this.WABA_ID = WABA_ID;
@@ -279,10 +279,10 @@ class WhatsappCloud {
     async sendSimpleButtons({ recipientPhone, message, listOfButtons }) {
         this._mustHaveMessage(message);
         this._mustHaverecipientPhone(recipientPhone);
-        
-        if(!listOfButtons) throw new Error('listOfButtons cannot be empty');
-        if(listOfButtons.length > 3) throw new Error('listOfButtons cannot be bigger than 3 elements');
-        
+
+        if (!listOfButtons) throw new Error('listOfButtons cannot be empty');
+        if (listOfButtons.length > 3) throw new Error('listOfButtons cannot be bigger than 3 elements');
+
         let validButtons = listOfButtons
             .map((button) => {
                 if (!button.title) {
@@ -853,15 +853,15 @@ class WhatsappCloud {
         return response;
     }
 
-    async sendSticker({ message, recipientPhone }) {}
+    async sendSticker({ message, recipientPhone }) { }
 
-    async getUserProfile({ recipientPhone }) {}
+    async getUserProfile({ recipientPhone }) { }
 
-    async getUserStatus({ recipientPhone }) {}
+    async getUserStatus({ recipientPhone }) { }
 
-    async getUserProfilePicture({ recipientPhone }) {}
+    async getUserProfilePicture({ recipientPhone }) { }
 
-    async getUserStatusPicture({ recipientPhone }) {}
+    async getUserStatusPicture({ recipientPhone }) { }
 
     parseMessage(requestBody) {
         return messageParser({ requestBody, currentWABA_ID: this.WABA_ID });
